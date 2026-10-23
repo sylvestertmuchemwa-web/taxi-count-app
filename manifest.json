@@ -1,0 +1,18 @@
+{
+  "name": "Taxi Count",
+  "short_name": "Taxi Count",
+  "description": "Passenger counter, taxi status and shift fare tracker for minibus taxi drivers.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F7FB",
+  "theme_color": "#101B2D",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
