@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f5f1" />
+  <title>Goodway — City rides, made easy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root{--ink:#172321;--muted:#75817c;--line:#e7eae5;--paper:#f4f5f1;--white:#fff;--green:#bbf36a;--deep:#183b32;--soft:#edf6e2;--shadow:0 18px 50px #20362b12}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}button,input{font:inherit}button{cursor:pointer}
+    .app{min-height:100vh;display:grid;grid-template-columns:76px 1fr;max-width:1600px;margin:auto}.rail{background:#fff;border-right:1px solid var(--line);display:flex;align-items:center;flex-direction:column;padding:26px 0;gap:28px}.brand-mark{width:38px;height:38px;border-radius:13px;background:var(--deep);color:var(--green);display:grid;place-items:center;font-weight:800;font-size:19px;font-family:Manrope}.rail-nav{display:flex;flex-direction:column;gap:14px;margin-top:42px}.nav-icon{width:42px;height:42px;border:0;background:transparent;color:#8a9690;border-radius:14px;display:grid;place-items:center}.nav-icon.active,.nav-icon:hover{background:var(--soft);color:var(--deep)}.nav-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.rail-bottom{margin-top:auto}.avatar{width:35px;height:35px;border-radius:50%;background:#f3d9c5;color:#775640;display:grid;place-items:center;font-size:11px;font-weight:700}
+    main{padding:0 42px 36px;max-width:1480px;width:100%;margin:auto}.topbar{height:84px;display:flex;align-items:center;justify-content:space-between}.wordmark{font-family:Manrope;font-size:18px;font-weight:800;letter-spacing:-.7px}.wordmark span{color:#86be3a}.toplinks{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:12px}.toplinks button{border:0;background:none;color:inherit;padding:8px}.toplinks button:hover{color:var(--ink)}.top-right{display:flex;align-items:center;gap:14px}.help{border:1px solid var(--line);border-radius:20px;padding:9px 14px;background:#fff;font-size:12px;color:#47554f}
+    .hero{padding:22px 0 27px;display:flex;align-items:flex-end;justify-content:space-between}.eyebrow{text-transform:uppercase;letter-spacing:1.7px;color:#839078;font-size:10px;font-weight:700;margin-bottom:9px}.hero h1{font:800 clamp(30px,3vw,42px)/1.12 Manrope;margin:0;letter-spacing:-2px}.hero h1 em{color:#84b943;font-style:normal}.hero p{color:var(--muted);margin:10px 0 0;font-size:13px}.location-pill{border:1px solid var(--line);background:#fff;padding:10px 13px;border-radius:12px;color:#4b5a53;font-size:11px;display:flex;align-items:center;gap:8px}.location-pill b{color:var(--ink);font-weight:600}.dot{width:7px;height:7px;border-radius:50%;background:#9bd34e;box-shadow:0 0 0 3px #9bd34e22}
+    .content{display:grid;grid-template-columns:minmax(330px,390px) minmax(0,1fr);gap:20px;align-items:stretch}.panel{background:#fff;border:1px solid #eaede8;border-radius:18px;box-shadow:var(--shadow)}.booking{padding:24px 23px;display:flex;flex-direction:column;min-height:572px}.booking-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px}.booking-head h2{font:700 18px Manrope;margin:0;letter-spacing:-.6px}.step{font-size:10px;color:#7c8982;border:1px solid var(--line);border-radius:20px;padding:6px 10px}.field-stack{position:relative;display:flex;flex-direction:column;gap:11px}.route-line{position:absolute;left:15px;top:28px;height:45px;border-left:1px dashed #cbd5cc}.field{height:56px;border:1px solid #e9ece8;border-radius:12px;display:flex;align-items:center;padding:0 13px;gap:11px;background:#fff;position:relative}.field:focus-within{border-color:#a5cf6b;box-shadow:0 0 0 3px #bbf36a24}.field-icon{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:#a3d65b}.field-icon.end{border-radius:2px;background:#192d26}.field label{font-size:9px;color:#85918a;display:block;margin-bottom:3px}.field input{border:0;outline:0;width:100%;font-size:12px;color:var(--ink);background:transparent;font-weight:600}.field input::placeholder{color:#a8b0aa;font-weight:400}.swap{position:absolute;right:12px;top:50%;transform:translateY(-50%);border:1px solid var(--line);background:white;border-radius:8px;width:26px;height:26px;color:#738079;font-size:14px;z-index:2}.section-label{font-size:10px;color:#8a968f;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:21px 0 10px}.ride-list{display:flex;flex-direction:column;gap:8px}.ride-option{border:1px solid #eaede8;border-radius:12px;display:flex;align-items:center;padding:10px 12px;gap:10px;transition:.15s}.ride-option.selected{border-color:#9ac85a;background:#f8fcef;box-shadow:inset 0 0 0 1px #9ac85a}.car{width:34px;height:28px;display:grid;place-items:center;color:#334a3d}.car svg{width:31px;height:24px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}.ride-info{flex:1}.ride-name{font-size:12px;font-weight:700}.ride-meta{font-size:10px;color:#8a958e;margin-top:3px}.price{text-align:right;font-size:12px;font-weight:700}.price small{display:block;color:#8a958e;font-size:9px;font-weight:400;margin-top:3px}.payment{margin-top:20px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:15px}.pay-left{display:flex;align-items:center;gap:9px}.card-icon{width:28px;height:21px;border:1px solid #dce2dc;border-radius:5px;display:grid;place-items:center;color:#54645b;font-size:12px}.pay-label{font-size:10px;color:#87928b}.pay-value{font-size:11px;font-weight:600;margin-top:2px}.change{background:transparent;border:0;color:#668d37;font-size:10px;font-weight:700}.book-button{height:49px;border:0;border-radius:12px;background:var(--deep);color:white;font-weight:700;font-size:12px;margin-top:15px;display:flex;justify-content:center;align-items:center;gap:9px;transition:.2s}.book-button:hover{background:#245344;transform:translateY(-1px)}.book-button:disabled{opacity:.48;cursor:not-allowed;transform:none}.book-button span{color:var(--green);font-size:15px}.fineprint{text-align:center;font-size:9px;color:#9aa39d;margin:9px 0 0}
+    .map-panel{position:relative;min-height:572px;overflow:hidden;background:#e9eee6}.map-art{position:absolute;inset:0;background:#e8eee5}.map-art svg{width:100%;height:100%;display:block}.map-label{font:600 9px 'DM Sans';fill:#a3aca4;letter-spacing:1.3px}.map-small{font:500 8px 'DM Sans';fill:#9ba69c}.map-top{position:absolute;left:22px;top:20px;display:flex;gap:8px}.map-tag{border:1px solid #ffffffba;border-radius:10px;background:#ffffffed;padding:9px 12px;color:#66736b;font-size:10px;box-shadow:0 3px 10px #20362b0a}.map-tag strong{color:#273831}.map-controls{position:absolute;right:19px;top:20px;display:flex;flex-direction:column;gap:7px}.map-controls button{width:33px;height:33px;border:1px solid #fff;background:#ffffffec;border-radius:10px;font-size:17px;color:#53625a;box-shadow:0 3px 10px #20362b0a}.map-controls button:hover{background:#fff}.map-bottom{position:absolute;left:18px;right:18px;bottom:17px;background:#ffffffed;border:1px solid #fff;border-radius:14px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 24px #20362b0b}.map-bottom-label{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#8c9890}.map-bottom strong{font-size:12px;display:block;margin-top:4px}.eta{display:flex;align-items:center;gap:8px;color:#516158;font-size:10px}.eta b{font-size:12px;color:#21352b}.eta-icon{width:29px;height:29px;background:var(--soft);border-radius:9px;display:grid;place-items:center;color:#618a36;font-size:14px}.pin{filter:drop-shadow(0 4px 5px #455a4530)}.pin-label{font:700 9px 'DM Sans';fill:#fff}.vehicle{filter:drop-shadow(0 4px 5px #34403944)}
+    .bottom-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}.mini-card{background:#fff;border:1px solid #eaede8;border-radius:13px;padding:14px 16px;display:flex;align-items:center;gap:11px}.mini-icon{width:32px;height:32px;border-radius:10px;background:#f3f7ed;display:grid;place-items:center;color:#668b3c;font-size:14px}.mini-card strong{font-size:11px;display:block}.mini-card span{font-size:9px;color:#8c9891;display:block;margin-top:3px}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:#173b32;color:white;border-radius:12px;padding:13px 18px;box-shadow:0 10px 30px #15241d30;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:900px){main{padding:0 24px 28px}.content{grid-template-columns:minmax(300px,360px) minmax(0,1fr);gap:13px}.booking{padding:20px 17px}.bottom-row{gap:8px}.mini-card{padding:12px 10px}.toplinks{gap:12px}}
+    @media(max-width:700px){.app{grid-template-columns:1fr}.rail{display:none}main{padding:0 15px 22px}.topbar{height:65px}.toplinks{display:none}.hero{padding:19px 0 20px;align-items:flex-start}.location-pill{font-size:0;padding:11px}.location-pill b{font-size:10px}.hero h1{font-size:31px}.hero p{font-size:11px;max-width:245px;line-height:1.5}.content{grid-template-columns:1fr}.booking{min-height:unset;order:2}.map-panel{min-height:310px;order:1}.bottom-row{grid-template-columns:1fr 1fr 1fr}.mini-card{padding:10px 8px;gap:7px}.mini-icon{width:27px;height:27px;flex-shrink:0}.mini-card strong{font-size:9px}.mini-card span{font-size:8px}.map-top{left:12px;top:12px}.map-controls{right:11px;top:12px}.map-bottom{left:11px;right:11px;bottom:11px;padding:10px 12px}}
+    @media(max-width:380px){.bottom-row{grid-template-columns:1fr}.mini-card{padding:10px 12px}.map-panel{min-height:275px}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="Main navigation">
+      <div class="brand-mark">g</div>
+      <nav class="rail-nav">
+        <button class="nav-icon active" aria-label="Book a ride" title="Book a ride"><svg viewBox="0 0 24 24"><path d="M3 12h18M5 12l1.5-5h11L19 12v6h-2v-2H7v2H5zM7 12h.01M17 12h.01"/><path d="M7 7l1-3h8l1 3"/></svg></button>
+        <button class="nav-icon" aria-label="Ride history" title="Ride history"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg></button>
+        <button class="nav-icon" aria-label="Payment methods" title="Payment methods"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h4"/></svg></button>
+        <button class="nav-icon" aria-label="Help" title="Help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.4 1.6c-1.2 1.1-2 1.4-2 3m0 3h.01"/></svg></button>
+      </nav><div class="rail-bottom avatar">AM</div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div class="wordmark">goodway<span>.</span></div>
+        <nav class="toplinks"><button>Ride</button><button>Drive with us</button><button>About</button></nav>
+        <div class="top-right"><button class="help" id="helpBtn">Need help?</button><div class="avatar">AM</div></div>
+      </header>
+      <section class="hero">
+        <div><div class="eyebrow">Your city, your way</div><h1>Where to <em>today?</em></h1><p>A better ride is just a few taps away.</p></div>
+        <div class="location-pill"><span class="dot"></span><span>YOUR LOCATION</span><b>Johannesburg, ZA</b></div>
+      </section>
+      <section class="content">
+        <div class="panel booking">
+          <div class="booking-head"><h2>Plan your ride</h2><span class="step">01 &nbsp; / &nbsp; BOOK</span></div>
+          <div class="field-stack">
+            <div class="route-line"></div>
+            <div class="field"><span class="field-icon"></span><div style="flex:1"><label for="pickup">PICKUP LOCATION</label><input id="pickup" value="Rosebank, Johannesburg" placeholder="Enter pickup point" /></div><button class="swap" id="swapBtn" aria-label="Swap locations">↕</button></div>
+            <div class="field"><span class="field-icon end"></span><div style="flex:1"><label for="destination">YOUR DESTINATION</label><input id="destination" value="Sandton City, Johannesburg" placeholder="Where are you going?" /></div></div>
+          </div>
+          <div class="section-label">Choose your ride</div>
+          <div class="ride-list" id="rideList">
+            <div class="ride-option selected" data-type="Goodway Go" data-fare="R 86" data-time="4 min"><div class="car"><svg viewBox="0 0 40 28"><path d="M5 18l2-7c.4-1.5 1.5-2.5 3-2.5h19c1.7 0 2.6.8 3.2 2.3l2.3 7.2v4H5z"/><path d="M9 12h21M9 22v2m22-2v2M12 18h.1m15.8 0h.1"/><circle cx="11" cy="21" r="2"/><circle cx="29" cy="21" r="2"/></svg></div><div class="ride-info"><div class="ride-name">Goodway Go</div><div class="ride-meta">1–3 seats · Everyday ride</div></div><div class="price">R 86<small>4 min away</small></div></div>
+            <div class="ride-option" data-type="Goodway Plus" data-fare="R 124" data-time="6 min"><div class="car"><svg viewBox="0 0 40 28"><path d="M5 18l2-7c.4-1.5 1.5-2.5 3-2.5h19c1.7 0 2.6.8 3.2 2.3l2.3 7.2v4H5z"/><path d="M9 12h21M9 22v2m22-2v2M12 18h.1m15.8 0h.1"/><circle cx="11" cy="21" r="2"/><circle cx="29" cy="21" r="2"/><path d="M15 8.5V7h8v1.5"/></svg></div><div class="ride-info"><div class="ride-name">Goodway Plus</div><div class="ride-meta">1–4 seats · Extra comfort</div></div><div class="price">R 124<small>6 min away</small></div></div>
+            <div class="ride-option" data-type="Goodway XL" data-fare="R 158" data-time="8 min"><div class="car"><svg viewBox="0 0 40 28"><path d="M4 18l2-7c.5-1.5 1.4-2.5 3-2.5h21c1.7 0 2.7.8 3.2 2.3l2 7.2v4H4z"/><path d="M8 12h24M8 22v2m23-2v2M12 18h.1m15.8 0h.1"/><circle cx="10" cy="21" r="2"/><circle cx="30" cy="21" r="2"/><path d="M14 9l1-3h9l2 3"/></svg></div><div class="ride-info"><div class="ride-name">Goodway XL</div><div class="ride-meta">1–6 seats · Room for more</div></div><div class="price">R 158<small>8 min away</small></div></div>
+          </div>
+          <div class="payment"><div class="pay-left"><div class="card-icon">▰</div><div><div class="pay-label">PAYMENT METHOD</div><div class="pay-value" id="payValue">Cash</div></div></div><button class="change" id="paymentBtn">CHANGE</button></div>
+          <button class="book-button" id="bookBtn"><span>＋</span><span style="color:white">Find my ride</span></button>
+          <div class="fineprint">Your fare is an estimate. Final fare may vary by route and traffic.</div>
+        </div>
+        <div class="panel map-panel">
+          <div class="map-art">
+            <svg viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice" aria-label="Map preview showing a route from Rosebank to Sandton">
+              <rect width="900" height="600" fill="#e9efe7"/>
+              <path d="M0 78L900 191M0 224L900 67M0 422L900 304M0 548L900 420M112 0L240 600M302 0L423 600M492 0L587 600M738 0L646 600M862 0L781 600" stroke="#fff" stroke-width="18" fill="none"/>
+              <path d="M0 78L900 191M0 224L900 67M0 422L900 304M0 548L900 420M112 0L240 600M302 0L423 600M492 0L587 600M738 0L646 600M862 0L781 600" stroke="#d9e0d7" stroke-width="1.4" fill="none"/>
+              <path d="M0 151L900 351M188 0L115 600M605 0L855 600" stroke="#d2e3d3" stroke-width="5" fill="none"/>
+              <path d="M0 339C170 302 252 280 352 305S527 374 610 321 735 222 900 245" stroke="#fff" stroke-width="11" fill="none"/>
+              <path d="M0 339C170 302 252 280 352 305S527 374 610 321 735 222 900 245" stroke="#c9d8c9" stroke-width="1.2" fill="none"/>
+              <path d="M261 398C300 347 335 305 385 298S489 322 534 283 581 230 627 209" stroke="#fff" stroke-width="10" fill="none"/>
+              <path d="M261 398C300 347 335 305 385 298S489 322 534 283 581 230 627 209" stroke="#bbf36a" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <g opacity=".65"><rect x="70" y="116" width="104" height="59" rx="9" fill="#dce8d7"/><rect x="676" y="360" width="127" height="62" rx="8" fill="#dce8d7"/><rect x="337" y="452" width="97" height="52" rx="8" fill="#dce8d7"/><rect x="640" y="104" width="114" height="48" rx="8" fill="#dce8d7"/></g>
+              <text x="320" y="183" class="map-label">ROSEBANK</text><text x="654" y="258" class="map-label">SANDTON</text><text x="738" y="483" class="map-small">HYDE PARK</text><text x="129" y="474" class="map-small">PARKTOWN</text><text x="443" y="510" class="map-small">JAN SMUTS AVE</text><text x="593" y="97" class="map-small">RIVONIA RD</text>
+              <g class="pin" transform="translate(261 398)"><circle r="20" fill="#bbf36a" opacity=".22"/><circle r="12" fill="#183b32" stroke="#fff" stroke-width="4"/><circle r="3" fill="#bbf36a"/></g>
+              <g transform="translate(627 209)"><path d="M0-23c-10 0-17 7-17 16 0 13 17 28 17 28S17 6 17-7C17-16 10-23 0-23z" fill="#183b32"/><circle cy="-7" r="5" fill="#bbf36a"/><rect x="-32" y="29" width="64" height="18" rx="9" fill="#183b32"/><text x="0" y="41" text-anchor="middle" class="pin-label">DESTINATION</text></g>
+              <g class="vehicle" transform="translate(452 315) rotate(-22)"><rect x="-15" y="-10" width="30" height="20" rx="7" fill="#fff" stroke="#668b3c" stroke-width="2"/><path d="M-9-6h18v11h-18z" fill="#dceacb"/><circle cx="-9" cy="9" r="2.5" fill="#273a30"/><circle cx="9" cy="9" r="2.5" fill="#273a30"/></g>
+            </svg>
+          </div>
+          <div class="map-top"><div class="map-tag"><strong>Rosebank</strong> &nbsp;·&nbsp; Johannesburg</div><div class="map-tag">Route preview</div></div>
+          <div class="map-controls"><button id="zoomIn" aria-label="Zoom in">＋</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="locate" aria-label="Locate me">◎</button></div>
+          <div class="map-bottom"><div><div class="map-bottom-label">YOUR JOURNEY</div><strong>Rosebank <span style="color:#aab4aa">→</span> Sandton City</strong></div><div class="eta"><div class="eta-icon">◷</div><div><b>18 min</b><br>approx. travel time</div></div></div>
+        </div>
+      </section>
+      <section class="bottom-row">
+        <div class="mini-card"><div class="mini-icon">⌖</div><div><strong>Safe by design</strong><span>Verified local drivers</span></div></div>
+        <div class="mini-card"><div class="mini-icon">◷</div><div><strong>Right on time</strong><span>Live ride updates</span></div></div>
+        <div class="mini-card"><div class="mini-icon">♡</div><div><strong>Here for you</strong><span>Support when you need it</span></div></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const rideOptions=[...document.querySelectorAll('.ride-option')];
+    const toast=document.getElementById('toast');let toastTimer;
+    function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2800)}
+    rideOptions.forEach(option=>option.addEventListener('click',()=>{rideOptions.forEach(item=>item.classList.remove('selected'));option.classList.add('selected')}));
+    document.getElementById('swapBtn').addEventListener('click',()=>{const p=document.getElementById('pickup'),d=document.getElementById('destination');[p.value,d.value]=[d.value,p.value]});
+    document.getElementById('paymentBtn').addEventListener('click',()=>{const current=document.getElementById('payValue');current.textContent=current.textContent==='Cash'?'Card ending in 2048':current.textContent==='Card ending in 2048'?'Digital wallet':'Cash'});
+    document.getElementById('bookBtn').addEventListener('click',()=>{const pickup=document.getElementById('pickup').value.trim(),destination=document.getElementById('destination').value.trim();if(!pickup||!destination){showToast('Add both pickup and destination to continue.');return}const ride=document.querySelector('.ride-option.selected');showToast(`Finding a ${ride.dataset.type} ride · estimated ${ride.dataset.fare}`)});
+    document.getElementById('helpBtn').addEventListener('click',()=>showToast('Goodway support is here to help.'));
+    document.getElementById('locate').addEventListener('click',()=>showToast('Map centred on Rosebank, Johannesburg.'));
+    let zoom=1;document.getElementById('zoomIn').addEventListener('click',()=>{zoom=Math.min(1.35,zoom+.08);document.querySelector('.map-art svg').style.transform=`scale(${zoom})`});document.getElementById('zoomOut').addEventListener('click',()=>{zoom=Math.max(.9,zoom-.08);document.querySelector('.map-art svg').style.transform=`scale(${zoom})`});
+  </script>
+</body>
+</html>
